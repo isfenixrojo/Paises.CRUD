@@ -1,4 +1,7 @@
 
+using API.Paises.Datos;
+using Microsoft.EntityFrameworkCore;
+
 namespace API.Paises
 {
     public class Program
@@ -13,6 +16,10 @@ namespace API.Paises
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+            opciones.UseSqlServer("name=ConnPaises"));
+
 
             var app = builder.Build();
 

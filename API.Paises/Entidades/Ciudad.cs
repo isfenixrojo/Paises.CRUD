@@ -3,7 +3,7 @@
     public class Ciudad
     {
         public int Id { get; set; }
-        public string NombrePais { get; set; }
+        public string NombreCiudad { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime Fechaedicion { get; set; }
 
