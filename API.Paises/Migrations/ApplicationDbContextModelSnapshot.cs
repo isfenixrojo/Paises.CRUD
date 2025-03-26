@@ -36,16 +36,19 @@ namespace API.Paises.Migrations
                     b.Property<DateTime>("FechaEdicion")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdPais")
+                        .HasColumnType("int");
+
                     b.Property<string>("NombreEstado")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("paisId")
+                    b.Property<int?>("PaisId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("paisId");
+                    b.HasIndex("PaisId");
 
                     b.ToTable("Estados");
                 });
@@ -75,11 +78,11 @@ namespace API.Paises.Migrations
 
             modelBuilder.Entity("API.Paises.Entidades.Estado", b =>
                 {
-                    b.HasOne("API.Paises.Entidades.Pais", "pais")
+                    b.HasOne("API.Paises.Entidades.Pais", "Pais")
                         .WithMany("Estado")
-                        .HasForeignKey("paisId");
+                        .HasForeignKey("PaisId");
 
-                    b.Navigation("pais");
+                    b.Navigation("Pais");
                 });
 
             modelBuilder.Entity("API.Paises.Entidades.Pais", b =>

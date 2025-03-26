@@ -28,10 +28,12 @@ namespace API.Paises.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Pais>> GetPaisId(int id)
         {
-            var pais = await _context.Pais.FirstOrDefaultAsync(x => x.Id == id);
+            var pais = await _context.Pais
+                .Include(x => x.Estado)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (pais is null) 
             {
-                return NotFound($"El registro con id {id} no encontrado");
+                return NotFound($"El registro con id {id} no fue encontrado");
             }
 
             return pais;
@@ -40,8 +42,8 @@ namespace API.Paises.Controllers
         [HttpPost]
         public async Task<ActionResult> PostPaises(Pais pais)
         {
-            pais.FechaCreacion = DateTime.Now;
-            pais.FechaEdicion = DateTime.Now;
+            //pais.FechaCreacion = DateTime.Now;
+            //pais.FechaEdicion = DateTime.Now;
 
             _context.Add(pais);
             await _context.SaveChangesAsync();

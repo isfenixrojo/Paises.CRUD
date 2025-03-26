@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Paises.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250326021030_TablaEstados")]
-    partial class TablaEstados
+    [Migration("20250326122906_CreacionDB-Tabla")]
+    partial class CreacionDBTabla
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,16 +39,19 @@ namespace API.Paises.Migrations
                     b.Property<DateTime>("FechaEdicion")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdPais")
+                        .HasColumnType("int");
+
                     b.Property<string>("NombreEstado")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("paisId")
+                    b.Property<int?>("PaisId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("paisId");
+                    b.HasIndex("PaisId");
 
                     b.ToTable("Estados");
                 });
@@ -78,11 +81,11 @@ namespace API.Paises.Migrations
 
             modelBuilder.Entity("API.Paises.Entidades.Estado", b =>
                 {
-                    b.HasOne("API.Paises.Entidades.Pais", "pais")
+                    b.HasOne("API.Paises.Entidades.Pais", "Pais")
                         .WithMany("Estado")
-                        .HasForeignKey("paisId");
+                        .HasForeignKey("PaisId");
 
-                    b.Navigation("pais");
+                    b.Navigation("Pais");
                 });
 
             modelBuilder.Entity("API.Paises.Entidades.Pais", b =>

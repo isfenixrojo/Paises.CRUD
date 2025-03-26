@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaz\" />
-    <Folder Include="Repositorio\" />
+    <Folder Include="Postman\" />
   </ItemGroup>
 
 </Project>

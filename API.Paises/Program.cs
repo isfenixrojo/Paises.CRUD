@@ -1,4 +1,6 @@
 
+using System.Security.Cryptography.Xml;
+using System.Text.Json.Serialization;
 using API.Paises.Datos;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +14,9 @@ namespace API.Paises
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(opciones => 
+            opciones.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
