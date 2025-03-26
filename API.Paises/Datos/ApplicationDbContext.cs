@@ -11,5 +11,6 @@ namespace API.Paises.Datos
         }
 
         public DbSet<Pais> Pais { get; set; }
+        public DbSet<Estado> Estados { get; set; }
     }
 }
