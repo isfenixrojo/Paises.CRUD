@@ -19,7 +19,7 @@ namespace API.Paises.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombrePais = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Fechaedicion = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FechaEdicion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
